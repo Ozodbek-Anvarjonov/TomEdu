@@ -10,4 +10,16 @@
     <ProjectReference Include="..\TomEdu.Domain\TomEdu.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\Notifications\Channels\" />
+    <Folder Include="Abstractions\Notifications\Credentials\" />
+    <Folder Include="Abstractions\Notifications\Models\" />
+    <Folder Include="Abstractions\Notifications\Templates\" />
+    <Folder Include="Abstractions\Notifications\Services\" />
+  </ItemGroup>
+
 </Project>
