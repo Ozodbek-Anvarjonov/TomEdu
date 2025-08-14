@@ -15,11 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\Notifications\Channels\" />
-    <Folder Include="Abstractions\Notifications\Credentials\" />
-    <Folder Include="Abstractions\Notifications\Models\" />
-    <Folder Include="Abstractions\Notifications\Templates\" />
-    <Folder Include="Abstractions\Notifications\Services\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Mappings\" />
+    <Folder Include="Features\Auth\Commands\" />
+    <Folder Include="Features\Auth\Validators\" />
+    <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Users\Commands\" />
+    <Folder Include="Features\Users\Dtos\" />
+    <Folder Include="Features\Users\Validators\" />
+    <Folder Include="Features\Users\Queries\" />
   </ItemGroup>
 
 </Project>
