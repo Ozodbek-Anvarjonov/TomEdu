@@ -1,5 +1,8 @@
-﻿namespace TomEdu.Application.Abstractions.Messaging;
+﻿using MediatR;
 
-public interface IQueryHandler
+namespace TomEdu.Application.Abstractions.Messaging;
+
+public interface IQueryHandler<TQuery, TResponse> : IRequestHandler<TQuery, TResponse>
+    where TQuery : IQuery<TResponse>
 {
 }

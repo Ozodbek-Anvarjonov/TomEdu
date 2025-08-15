@@ -5,7 +5,8 @@ using TomEdu.Application.Abstractions.Notifications.Services;
 using TomEdu.Application.Abstractions.Notifications.Templates.Contexts;
 using TomEdu.Application.Abstractions.Persistence.UnitOfWork;
 using TomEdu.Application.Common.Exceptions;
-using TomEdu.Application.Features.Auth.Dtos;
+using TomEdu.Application.Features.Auth.Commands;
+using TomEdu.Application.Features.Auth.Response;
 using TomEdu.Application.Services;
 using TomEdu.Domain.Entities;
 using TomEdu.Domain.Enums;
@@ -20,7 +21,7 @@ public class AuthService(
     INotificationSenderService notificationSenderService
     ) : IAuthService
 {
-    public async Task<LoginResponse> LoginAsync(LoginRequest loginRequest, CancellationToken cancellationToken = default)
+    public async Task<LoginResponse> LoginAsync(LoginCommand loginRequest, CancellationToken cancellationToken = default)
     {
         var user = await unitOfWork.Users
             .Get(entity => entity.FirstName == loginRequest.PhoneNumber)

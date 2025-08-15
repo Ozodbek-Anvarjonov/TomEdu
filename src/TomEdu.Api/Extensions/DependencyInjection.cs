@@ -21,6 +21,11 @@ namespace TomEdu.Api.Extensions;
 
 public static class DependencyInjection
 {
+    private static Assembly[] Assemblies = [
+        Assembly.GetExecutingAssembly(),
+        ..Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select(Assembly.Load)
+        ];
+
     public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddServices();
@@ -34,6 +39,7 @@ public static class DependencyInjection
         services.AddSettings(configuration);
         services.AddSecurity(configuration);
         services.AddCredentials(configuration);
+        services.AddMediatRs(configuration);
 
         return services;
     }
@@ -71,7 +77,17 @@ public static class DependencyInjection
 
     private static IServiceCollection AddValidators(this IServiceCollection services)
     {
-        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssemblies(Assemblies);
+
+        return services;
+    }
+
+    private static IServiceCollection AddMediatRs(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssemblies(Assemblies);
+        });
 
         return services;
     }

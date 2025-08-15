@@ -6,6 +6,6 @@ public interface IQuery : IRequest
 {
 }
 
-public interface TQuery<out TResponse> : IRequest<TResponse>
+public interface IQuery<out TResponse> : IRequest<TResponse>
 {
 }

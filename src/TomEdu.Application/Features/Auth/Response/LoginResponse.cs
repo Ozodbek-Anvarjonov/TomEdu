@@ -1,4 +1,4 @@
-﻿namespace TomEdu.Application.Features.Auth.Dtos;
+﻿namespace TomEdu.Application.Features.Auth.Response;
 
 public class LoginResponse
 {

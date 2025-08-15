@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 using TomEdu.Application.Common.Exceptions;
+using TomEdu.Application.Common.Responses;
 
 namespace TomEdu.Api.Filters;
 
