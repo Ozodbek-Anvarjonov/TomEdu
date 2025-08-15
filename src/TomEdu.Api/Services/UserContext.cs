@@ -1,0 +1,26 @@
+﻿using Microsoft.Extensions.Options;
+using System.Security.Claims;
+using TomEdu.Application.Abstractions.Identity;
+using TomEdu.Application.Settings;
+
+namespace TomEdu.Api.Services;
+
+public class UserContext : IUserContext
+{
+    public UserContext(IHttpContextAccessor contextAccessor, IOptions<SystemSettings> options)
+    {
+        SystemId = options.Value.SystemId;
+
+        var userIdClaim = contextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (long.TryParse(userIdClaim, out var userId))
+            UserId = userId;
+        else
+            UserId = null;
+    }
+
+    public long SystemId { get; }
+    public long? UserId { get; }
+
+    public long GetCurrentUserId() =>
+        UserId is not null ? UserId.Value : SystemId;
+}

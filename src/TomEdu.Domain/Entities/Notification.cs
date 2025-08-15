@@ -1,7 +1,8 @@
-﻿using TomEdu.Domain.Enums;
+﻿using TomEdu.Domain.Common.Entities;
+using TomEdu.Domain.Enums;
 
 namespace TomEdu.Domain.Entities;
-public class Notification
+public class Notification : SoftDeletedEntity
 {
     public string SenderName { get; set; } = default!;
     public string SenderContact { get; set; } = default!;

@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
 
@@ -20,6 +22,10 @@
     <Folder Include="Features\Auth\Commands\" />
     <Folder Include="Features\Auth\Validators\" />
     <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Notifications\Commands\" />
+    <Folder Include="Features\Notifications\Dtos\" />
+    <Folder Include="Features\Notifications\Validators\" />
+    <Folder Include="Features\Notifications\Queries\" />
     <Folder Include="Features\Users\Commands\" />
     <Folder Include="Features\Users\Dtos\" />
     <Folder Include="Features\Users\Validators\" />

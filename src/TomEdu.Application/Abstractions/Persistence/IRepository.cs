@@ -19,11 +19,11 @@ public interface IRepository<TEntity>
         CancellationToken cancellationToken = default
         );
 
-    Task<long> CreateAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task<long> CreateAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default);
 
-    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task UpdateAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default);
 
-    Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task DeleteAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default);
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

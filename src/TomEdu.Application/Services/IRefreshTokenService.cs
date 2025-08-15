@@ -1,6 +1,6 @@
 ﻿using TomEdu.Domain.Entities;
 
-namespace TomEdu.Application.Abstractions.Identity;
+namespace TomEdu.Application.Services;
 
 public interface IRefreshTokenService
 {

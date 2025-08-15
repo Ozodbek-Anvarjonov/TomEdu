@@ -1,17 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using TomEdu.Application.Abstractions.Persistence;
 using TomEdu.Application.Abstractions.Persistence.UnitOfWork;
+using TomEdu.Domain.Entities;
 
 namespace TomEdu.Infrastructure.Persistence.UnitOfWork;
 
 public class UnitOfWork(
-    DbContext context
+    DbContext context,
+    IRepository<User> users,
+    IRepository<Notification> notifications,
+    IRepository<RefreshToken> refreshToken
     ) : IUnitOfWork
 {
     private IDbContextTransaction? currentTransaction;
     private bool disposed;
 
     public bool HasActiveTransaction => currentTransaction != null;
+
+    public IRepository<User> Users { get; } = users;
+    public IRepository<Notification> Notifications { get; } = notifications;
+    public IRepository<RefreshToken> RefreshTokens { get; } = refreshToken;
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
        await context.SaveChangesAsync(cancellationToken);

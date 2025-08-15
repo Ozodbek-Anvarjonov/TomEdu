@@ -47,31 +47,36 @@ public class Repository<TEntity>(DbContext context) : IRepository<TEntity>
         return entity;
     }
 
-    public async Task<long> CreateAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task<long> CreateAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         await context.AddAsync(entity, cancellationToken);
+
+        if (saveChanges)
+            await context.SaveChangesAsync(cancellationToken);
 
         return entity.Id;
     }
 
-    public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task UpdateAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         if (entity is null)
             throw new ArgumentNullException(nameof(entity));
 
         context.Update(entity);
 
-        return Task.CompletedTask;
+        if (saveChanges)
+            await context.SaveChangesAsync(cancellationToken);
     }
 
-    public Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task DeleteAsync(TEntity entity, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         if (entity is null)
             throw new ArgumentNullException(nameof(entity));
 
         context.Remove(entity);
 
-        return Task.CompletedTask;
+        if (saveChanges)
+            await context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>

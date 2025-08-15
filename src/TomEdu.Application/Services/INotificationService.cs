@@ -1,7 +1,7 @@
 ﻿using TomEdu.Application.Common.Filters;
 using TomEdu.Domain.Entities;
 
-namespace TomEdu.Application.Abstractions.Notifications.Services;
+namespace TomEdu.Application.Services;
 
 public interface INotificationService
 {
